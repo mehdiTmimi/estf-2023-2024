@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,24 +16,25 @@
             <h2>Form</h2>
             <div>
                 <div class="inputs">
-                    <input type="number" placeholder="nbr1">
-                    <input type="number" placeholder="nbr2">
+                    <input id="nbr1Input" type="number" placeholder="nbr1">
+                    <input id="nbr2Input" type="number" placeholder="nbr2">
                 </div>
                 <div class="controls">
-                    <button>+</button>
-                    <button>-</button>
-                    <button>/</button>
-                    <button>X</button>
+                    <button id="btnAdd">+</button>
+                    <button id="btnMinus">-</button>
+                    <button id="btnDivision">/</button>
+                    <button id="btnMultip">X</button>
                 </div>
             </div>
         </section>
         <section class="historiqueSection">
-            <h2>Historique</h2>
-            <ul>
-                <li>1 <span class="operation">+</span> 3 = 4</li>
-                <li>1 <span class="operation">+</span> 3 = 4</li>
-                <li>1 <span class="operation">+</span> 3 = 4</li>
-            </ul>
+            <div>
+                <h2>Historique</h2>
+                <button id="btnReset">reset</button>
+            </div>
+            <ul id="liste">
+               
+           </ul>
         </section>
     </main>
     <footer>

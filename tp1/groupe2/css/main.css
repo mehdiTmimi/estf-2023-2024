@@ -56,6 +56,11 @@ main .historiqueSection{
     align-items: center;
     gap: 16px;
 }
+main .historiqueSection>div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 main .historiqueSection ul 
 {
     width: 100%;
@@ -74,6 +79,10 @@ main .historiqueSection ul li:last-child{
 .operation{
     color: blue;
     font-weight: bold;
+}
+.resultat{
+    letter-spacing: normal;
+    margin-right: 10px;
 }
 footer{
     text-align: center;
