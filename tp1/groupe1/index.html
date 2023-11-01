@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <!--h1+nav>ul>li*2>button-->
+        <h1>Gestion etudiants</h1>
+        <nav>
+            <ul>
+                <li><button>Log in</button></li>
+                <li><button>Sign up</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="formSection">
+            <h2>Form</h2>
+            <div>
+                <div>
+                    <div class="ligneForm">
+                        <label for="nomInput">nom:</label>
+                        <input id="nomInput" type="text">
+                    </div>
+                    <div class="ligneForm">
+                        <label for="prenomInput">prenom:</label>
+                        <input id="prenomInput" type="text">
+                    </div>
+                    <div class="ligneForm">
+                        <label  for="ageInput">age:</label>
+                        <input id="ageInput" type="number">
+                    </div>
+                </div>
+                <div class="controls">
+                    <button>annuler</button>
+                    <button>ajouter</button>
+                </div>
+            </div>
+        </section>
+        <section class="listSection">
+            <h2>Liste</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>age</th>
+                        <th>options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>tmimi</td>
+                        <td>mehdi</td>
+                        <td>31</td>
+                        <td><button>X</button></td>
+                    </tr>
+                    <tr>
+                        <td>filali</td>
+                        <td>ali</td>
+                        <td>20</td>
+                        <td><button>X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        @copyright estf 2023
+    </footer>
+</body>
+</html>
