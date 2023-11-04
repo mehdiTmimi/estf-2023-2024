@@ -1,0 +1,4 @@
+- Quand on clique sur le bouton valider: il faut créer dynamiquement en js un contenu et l'ajouter à la section "résultat' 
+cette création doit être faite suivant le choix de la balise (liste déroulante), le texte de l'input "contenu" et la couleur choisie.
+- L'input href n'est affiché seulement si la balise "a" est choisi. par défaut cet input href est caché.
+- pensez à faire une validation du formulaire
