@@ -18,8 +18,5 @@ validerBtn.addEventListener('click',()=>{
     let email=emailInput.value
     let telephone=telephoneInput.value
     let age=ageInput.value
-
-    // champ obligatoire
-    
     show(nom,prenom,email,telephone,age)
 })
