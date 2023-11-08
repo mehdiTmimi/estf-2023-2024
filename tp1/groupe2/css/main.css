@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main{
+    display: flex;
+}
+main .formSection{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+main .resultatSection{
+    flex: 1;
+}
+main .formSection .inputDiv>div{
+    margin: 10px 0px;
+}
+main .formSection .inputDiv>div>*{
+ width: 100px;   
+ display: inline-block;
+}

@@ -94,3 +94,11 @@ footer{
     width: 100%;
 }
 
+.delete{
+    border: 0px;
+    padding: 10px 15px;
+    background: red;
+    color: white;
+    border-radius: 5px;
+}
+

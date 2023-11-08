@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
@@ -37,8 +38,8 @@
                     </div>
                 </div>
                 <div class="controls">
-                    <button>annuler</button>
-                    <button>ajouter</button>
+                    <button id="annulerBtn">annuler</button>
+                    <button id="ajouterBtn">ajouter</button>
                 </div>
             </div>
         </section>
@@ -53,19 +54,17 @@
                         <th>options</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
+                    <!--
                     <tr>
                         <td>tmimi</td>
                         <td>mehdi</td>
                         <td>31</td>
-                        <td><button>X</button></td>
+                        <td>
+                            <button class="delete">X</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>filali</td>
-                        <td>ali</td>
-                        <td>20</td>
-                        <td><button>X</button></td>
-                    </tr>
+                -->
                 </tbody>
             </table>
         </section>
