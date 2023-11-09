@@ -10,7 +10,9 @@ let ajouterResultat = (balise,contenu,color,href)=>{
     // creation des elements
     let li = document.createElement('li')
     let ele = document.createElement(balise)
+    let btnDelete = document.createElement("button")
     li.appendChild(ele)
+    li.appendChild(btnDelete)
     resultatListe.appendChild(li)
     ele.innerText=contenu
     ele.setAttribute("style","color:"+color);
@@ -19,6 +21,11 @@ let ajouterResultat = (balise,contenu,color,href)=>{
             ele.setAttribute('href',href)
             ele.setAttribute('target','_blank')
         }
+    btnDelete.innerText="supprimer"
+    btnDelete.classList.add('delete')
+    btnDelete.addEventListener('click',()=>{
+        li.remove()
+    })
 }
 
 validerBtn.addEventListener('click',()=>{

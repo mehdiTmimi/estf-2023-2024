@@ -51,6 +51,10 @@ main .formSection{
 main .resultatSection{
     flex: 1;
 }
+main .resultatSection li{
+    display: flex;
+    justify-content: space-between;
+}
 main .resultatSection>h2{
     text-align: center;
 }
