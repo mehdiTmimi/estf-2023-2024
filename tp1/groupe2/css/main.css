@@ -51,7 +51,7 @@ main .formSection{
 main .resultatSection{
     flex: 1;
 }
-main .resultatSection h2{
+main .resultatSection>h2{
     text-align: center;
 }
 main .formSection .inputDiv>div{
@@ -60,4 +60,12 @@ main .formSection .inputDiv>div{
 main .formSection .inputDiv>div>*{
     width: 100px;   
     display: inline-block;
+}
+
+.delete{
+    background-color: red;
+    color: white;
+    border: 0px;
+    border: 5px;
+    padding: 5px;
 }
