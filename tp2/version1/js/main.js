@@ -21,13 +21,29 @@ validerBtn.addEventListener('click',()=>{
     let isValid=true;
     let inputs = document.querySelectorAll(".inputSection input");
 
+
+
     // champ obligatoire
     inputs.forEach(element=>{
+
         if(element.value==""){
             element.classList.add('error')
             element.classList.remove('valid')
             element.nextElementSibling.innerText="obligatoire"
             isValid=false
+        }
+        else{
+            let expression =new RegExp(nomInput.getAttribute("expression"))
+            if(!expression.test(element.value))
+            {
+                console.log('teste')
+                element.classList.add('error')
+                element.classList.remove('valid')
+                element.nextElementSibling.innerText=
+                element.getAttribute("messageErreur")
+                isValid=false
+            }
+
         }
     })
     if(isValid)
@@ -41,8 +57,11 @@ validerBtn.addEventListener('click',()=>{
         }
     else{
         // affectation des classes valid
+
         inputs.forEach(element=>{
-            if(element.value!=""){
+            let expression =new RegExp(element.getAttribute("expression"))
+           
+            if(element.value!="" && expression.test(element.value)){
                 element.classList.add('valid')
                 element.classList.remove('error')
                 element.nextElementSibling.innerText=""

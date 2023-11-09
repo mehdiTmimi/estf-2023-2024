@@ -16,27 +16,27 @@
             <div class="inputSection">
                 <div>
                     <label for="nomInput">Nom</label>
-                    <input type="text" id="nomInput">
+                    <input expression="[a-zA-Z]{3,}$" messageErreur="3 caracter minimum and only alphabetic" type="text" id="nomInput">
                     <div class="msgError"></div>
                 </div>
                 <div>
                     <label for="prenomInput">Prenom</label>
-                    <input type="text" id="prenomInput">
+                    <input expression="[a-zA-Z]{3,}$" messageErreur="3 caracter minimum and only alphabetic" type="text" id="prenomInput">
                     <div class="msgError"></div>
                 </div>
                 <div>
                     <label for="emailInput">Email</label>
-                    <input type="text" id="emailInput">
+                    <input expression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" messageErreur="email format" type="text" id="emailInput">
                     <div class="msgError"></div>
                 </div>
                 <div>
                     <label for="telephoneInput">telephone</label>
-                    <input type="text" id="telephoneInput">
+                    <input expression="^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" messageErreur="telephone format ..." type="text" id="telephoneInput">
                     <div class="msgError"></div>
                 </div>
                 <div>
                     <label for="ageInput">age</label>
-                    <input type="text" id="ageInput">
+                    <input expression="^(?:[0-9]|[1-9][0-9])$" messageErreur="only numbers" type="text" id="ageInput">
                     <div class="msgError"></div>
                 </div>
             </div>
