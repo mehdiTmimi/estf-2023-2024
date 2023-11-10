@@ -6,46 +6,45 @@ let hrefInput = document.getElementById("hrefInput")
 let validerBtn = document.getElementById("validerBtn")
 let resultatListe = document.getElementById("resultatListe")
 
-let ajouterResultat = (balise,contenu,color,href)=>{
-    // creation des elements
-    let li = document.createElement('li')
-    let ele = document.createElement(balise)
-    let btnDelete = document.createElement("button")
-    li.appendChild(ele)
-    li.appendChild(btnDelete)
-    resultatListe.appendChild(li)
-    ele.innerText=contenu
-    ele.setAttribute("style","color:"+color);
-    if(balise=='a')
-        {
-            ele.setAttribute('href',href)
-            ele.setAttribute('target','_blank')
-        }
-    btnDelete.innerText="supprimer"
-    btnDelete.classList.add('delete')
-    btnDelete.addEventListener('click',()=>{
-        li.remove()
+//traitements
+let add = (tag,content,color,hrefAttr)=>{
+    //creation des elements
+    let item = document.createElement('li')
+    let balise = document.createElement(tag)
+    let deleteBtn = document.createElement('button')
+
+    resultatListe.appendChild(item)
+    item.appendChild(balise)
+    item.appendChild(deleteBtn)
+
+    balise.innerText = content
+    deleteBtn.innerText="supprimer"
+
+    balise.setAttribute('style','color:'+color)
+    deleteBtn.classList.add('delete')
+
+    deleteBtn.addEventListener('click',()=>{
+        item.remove()
     })
+
+    if(tag=='a')
+    {
+        balise.setAttribute('target','_blank')
+        balise.setAttribute('href',hrefAttr)
+    }
 }
 
 validerBtn.addEventListener('click',()=>{
-    // recuperation des valeurs .value
-    let balise = baliseInput.value
-    let contenu = contenuInput.value
+    let tag = baliseInput.value
+    let content = contenuInput.value
     let color = colorInput.value
     let href = hrefInput.value
-    //verification (TODO)
-    // appel a la fonction ajouterResultat
-    ajouterResultat(balise,contenu,color,href)
-    // vider le formulaire
-    baliseInput.selectedIndex=0
-    contenuInput.value=""
-    colorInput.value="#000000"
-    hrefInput.value=""
-})
-let resetFct = ()=>{
-    resultatListe.innerHTML=""
-}
-resetBtn.addEventListener('click',()=>{
-    resetFct()
+
+    add(tag,content,color,href)
+
+    //vider le formulaire
+    tag.selectedIndex=0
+    content.value=""
+    color.value='#000000ff'
+    href.value=""
 })
