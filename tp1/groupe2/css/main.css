@@ -73,3 +73,7 @@ main .formSection .inputDiv>div>*{
     border: 5px;
     padding: 5px;
 }
+
+.hidden{
+    display: none!important;
+}
