@@ -55,12 +55,28 @@ ajouterBtn.addEventListener('click',()=>{
     ajouter(nom,prenom,age)
 })
 nomInput.addEventListener('input',()=>{
-    verifyForm()
     verifyInput(nomInput)
+    verifyForm()
 })
 prenomInput.addEventListener('input',()=>{
-    verifyForm()
     verifyInput(prenomInput)
+    verifyForm()
+})
+ageInput.addEventListener('input',()=>{
+    let age = ageInput.value
+    if(age<0 || age >120)
+    {
+        ageInput.classList.add('invalid')
+        ageInput.classList.remove('valid')
+        // span => error : obligatoire
+        ageInput.nextElementSibling.innerText="error : must be between 0 and 120"
+    }
+    else{
+        ageInput.classList.add('valid')
+        ageInput.classList.remove('invalid')
+        ageInput.nextElementSibling.innerText=""
+    }
+    verifyForm()
 })
 let verifyInput = (element)=>{
     let value = element.value.trim()
@@ -85,6 +101,9 @@ let verifyInput = (element)=>{
 }
 let verifyForm = ()=>{
     // tout le formualire 
+    if(document.querySelectorAll('.formSection input[class="valid"]').length==3)
+        return ajouterBtn.removeAttribute("disabled")
+    ajouterBtn.setAttribute("disabled","")
     // valid => button enable
 
     //invalid => button disable
