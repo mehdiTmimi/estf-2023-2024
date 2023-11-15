@@ -51,41 +51,38 @@ ajouterBtn.addEventListener('click',()=>{
     let nom = nomInput.value.trim()
     let prenom = prenomInput.value.trim()
     let age = ageInput.value
-   
+    // verification
+   if(nom =="" || prenom=="" || age =="")
+        return alert("tous les champs sont obligatoires")
+
+    let error = false;
+    if(nom.length<3)
+    {
+        alert("nom minimum 3 caracters")
+        error = true
+    }
+    if(prenom.length<3)
+    {
+        alert("prenom minimum 3 caracters")
+        error = true
+    }
+    if(age <= 0 || age >=120)
+    {
+        alert("age must be between 1 and 120")
+        error = true
+    }
+
+    let expresion =/^[a-zA-Z]{3,}$/ // regexp
+    if(!expresion.test(nom))
+    {
+        alert("nom: only alphnumeric")
+        error = true
+    }
+    if(!expresion.test(prenom))
+    {
+        alert("prenom: only alphnumeric")
+        error = true
+    }
+    if(!error) // error == false
     ajouter(nom,prenom,age)
 })
-nomInput.addEventListener('input',()=>{
-    verifyForm()
-    verifyInput(nomInput)
-})
-prenomInput.addEventListener('input',()=>{
-    verifyForm()
-    verifyInput(prenomInput)
-})
-let verifyInput = (element)=>{
-    let value = element.value.trim()
-    if(value==""){
-        element.classList.add('invalid')
-        element.classList.remove('valid')
-        // span => error : obligatoire
-        element.nextElementSibling.innerText="error : obligatoire"
-    }
-    else if(!/^[a-zA-Z]{3,}$/.test(value))
-    {
-        element.classList.add('invalid')
-        element.classList.remove('valid')
-        // span => error : obligatoire
-        element.nextElementSibling.innerText="only alphabet et minimum 3"
-    }
-    else{
-        element.classList.add('valid')
-        element.classList.remove('invalid')
-        element.nextElementSibling.innerText=""
-    }
-}
-let verifyForm = ()=>{
-    // tout le formualire 
-    // valid => button enable
-
-    //invalid => button disable
-}

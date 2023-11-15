@@ -48,6 +48,19 @@ main .formSection{
     flex-direction: column;
     align-items: center;
 }
+main .formSection input{
+    outline: unset;
+}
+main .formSection input+span{
+    color: red;
+    font-style: italic;
+}
+main .formSection .valid{
+    border: 2px solid green;
+}
+main .formSection .invalid{
+    border: 2px solid red;
+}
 main .listSection{
     flex:5;
     display: flex;
@@ -100,5 +113,15 @@ footer{
     background: red;
     color: white;
     border-radius: 5px;
+}
+
+
+.divExample{
+    width: 400px;
+    height: 400px;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
