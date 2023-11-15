@@ -33,7 +33,7 @@ validerBtn.addEventListener('click',()=>{
             isValid=false
         }
         else{
-            let expression =new RegExp(nomInput.getAttribute("expression"))
+            let expression =new RegExp(element.getAttribute("expression"))
             if(!expression.test(element.value))
             {
                 console.log('teste')

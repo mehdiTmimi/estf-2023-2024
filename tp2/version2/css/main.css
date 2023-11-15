@@ -8,10 +8,11 @@
     flex-direction: column;
     align-items: center;
 }
-.inputSection div{
+.inputSection>div{
 margin: 20px;
+position: relative;
 }
-.inputSection div>*{
+.inputSection>div>*{
    width: 200px;
    display: inline-block;
 }
@@ -39,4 +40,28 @@ margin: 20px;
 .controls button:last-child{
 background: aqua;
 color: white;
+}
+input{
+    outline:none;
+}
+input:focus{
+    border: 0px;
+    border-bottom: 1px solid blue;
+}
+.valid{
+    border: 1px solid green;
+}
+.error{
+    border: 1px solid red;
+}
+
+.msgError{
+    position: absolute;
+    padding-left: 20px;
+    color: red;
+}
+
+#validerBtn:disabled{
+    text-decoration: line-through;
+    color: black;
 }

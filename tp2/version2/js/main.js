@@ -20,3 +20,7 @@ validerBtn.addEventListener('click',()=>{
     let age=ageInput.value
     show(nom,prenom,email,telephone,age)
 })
+
+nomInput.addEventListener('input',()=>{
+    
+})
