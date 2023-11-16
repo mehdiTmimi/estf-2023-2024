@@ -77,3 +77,14 @@ main .formSection .inputDiv>div>*{
 .hidden{
     display: none!important;
 }
+
+.valid{
+    background-color: lightgreen;
+}
+.invalid{
+    background-color: lightcoral;
+}
+.msgError{
+    font-style: italic;
+    color: red;
+}

@@ -11,6 +11,16 @@ let show = (nom,prenom,email,telephone,age)=>{
     recap.innerText = nom + " " + prenom + 
     " " + email + " " + telephone + " "+ age;
 }
+let vider = ()=>{
+    // vider les inputs
+    document.querySelectorAll(".inputSection input").
+    forEach(element=>{
+        element.value=""
+        element.classList.remove("valid","error")
+        element.nextElementSibling.innerText=""
+    })
+    // effacer les styles et les textes dess erreurs
+}
 
 validerBtn.addEventListener('click',()=>{
     let nom=nomInput.value
@@ -19,8 +29,27 @@ validerBtn.addEventListener('click',()=>{
     let telephone=telephoneInput.value
     let age=ageInput.value
     show(nom,prenom,email,telephone,age)
+    // vider
 })
 
-nomInput.addEventListener('input',()=>{
-    
+document.querySelectorAll(".inputSection input")
+.forEach(input=>{
+    input.addEventListener('input',()=>{
+        let expression = new RegExp(input.getAttribute("expression"))
+        if(expression.test(input.value.trim()) == false){
+            input.classList.add("error")
+            input.classList.remove("valid")
+            input.nextElementSibling.innerText = 
+            input.getAttribute("messageErreur")
+        }
+        else{
+            input.classList.add("valid")
+            input.classList.remove("error")
+            input.nextElementSibling.innerText=""
+        }
+        if(document.querySelectorAll
+        ('.inputSection input[class="valid"]').length==5)
+            return validerBtn.removeAttribute("disabled")
+        validerBtn.setAttribute("disabled","");
+    })
 })

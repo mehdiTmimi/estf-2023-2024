@@ -23,7 +23,7 @@
                     <div>
                         <label for="baliseInput">Balise</label>
                         <select id="baliseInput">
-                            <option value="h1">h1</option>
+                            <option value="h1">titre 1</option>
                             <option value="h2">h2</option>
                             <option value="h3">h3</option>
                             <option value="h4">h4</option>
@@ -36,11 +36,13 @@
                     <!-- div*3>label+input -->
                     <div>
                         <label for="contenuInput">Contenu</label>
-                        <input id="contenuInput" type="text">
+                        <input  id="contenuInput" type="text">
+                        <span class="msgError"></span>
                     </div>
                     <div>
-                        <label for="colorInput">Color</label>
-                        <input id="colorInput" type="color">
+                        <label for="colorInput">Color (hex)</label>
+                        <input  id="colorInput" type="text">
+                        <span class="msgError"></span>
                     </div>
                     <div class="hidden">
                         <label for="hrefInput">href</label>

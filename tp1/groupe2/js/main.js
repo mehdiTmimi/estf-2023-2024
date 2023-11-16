@@ -38,14 +38,54 @@ validerBtn.addEventListener("click", () => {
   let content = contenuInput.value;
   let color = colorInput.value;
   let href = hrefInput.value;
-
+  let formValid = true;
+  if(content=="")
+  {
+    contenuInput.classList.add('invalid')
+    contenuInput.classList.remove('valid')
+    contenuInput.nextElementSibling.innerText="champ obligatoire"
+    formValid=false
+  }
+  else
+  {
+    contenuInput.classList.add('valid')
+    contenuInput.classList.remove('invalid')
+    contenuInput.nextElementSibling.innerText=""
+  }
+  //color
+  if(color=="")
+  {
+    colorInput.classList.add('invalid')
+    colorInput.classList.remove('valid')
+    colorInput.nextElementSibling.innerText="champ obligatoire"
+    formValid=false
+  }
+  else
+  {
+    colorInput.classList.add('valid')
+    colorInput.classList.remove('invalid')
+    colorInput.nextElementSibling.innerText=""
+  }
+  
+  if(!formValid)
+    return
   add(tag, content, color, href);
 
   //vider le formulaire
-  tag.selectedIndex = 0;
-  content.value = "";
-  color.value = "#000000ff";
-  href.value = "";
+  baliseInput.selectedIndex = 0;
+
+  contenuInput.value = "";
+  contenuInput.classList.remove('invalid')
+  contenuInput.classList.remove('valid')
+  colorInput.nextElementSibling.innerText=""
+
+  colorInput.value = "";
+  colorInput.classList.remove('invalid')
+  colorInput.classList.remove('valid')
+  contenuInput.nextElementSibling.innerText=""
+  colorInput.value = "#000000ff";
+  hrefInput.value = "";
+
 });
 let resetFct = () => {
   [...resultatListe.children].forEach((ele) => ele.remove());
@@ -55,10 +95,12 @@ resetBtn.addEventListener("click", () => {
 });
 
 baliseInput.addEventListener("change", () => {
+  console.log('salut');
   if (baliseInput.value == "a") 
         hrefInput.parentElement.classList.remove("hidden");
    else 
         hrefInput.parentElement.classList.add("hidden");
+      
 });
 add("h1", "salut", "red");
 add("h2", "salut", "blue");
