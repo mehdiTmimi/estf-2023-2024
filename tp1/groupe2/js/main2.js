@@ -38,14 +38,53 @@ validerBtn.addEventListener("click", () => {
   let content = contenuInput.value;
   let color = colorInput.value;
   let href = hrefInput.value;
+  let formValid = true;
+  let expressionContent = /^[a-zA-Z ]{5,}$/
+  if(!expressionContent.test(content)) // ==false
+  {
+    contenuInput.classList.add('invalid')
+    contenuInput.classList.remove('valid')
+    contenuInput.nextElementSibling.innerText="5 caracteres minimum"
+    formValid=false
+  }
+  else
+  {
+    contenuInput.classList.add('valid')
+    contenuInput.classList.remove('invalid')
+    contenuInput.nextElementSibling.innerText=""
+  }
+  //color
+  let colorExpression = /^[#][a-fA-F0-9]{6,8}$/
+  if(!colorExpression.test(color))
+  {
+    colorInput.classList.add('invalid')
+    colorInput.classList.remove('valid')
+    colorInput.nextElementSibling.innerText="hex color is required"
+    formValid=false
+  }
+  else
+  {
+    colorInput.classList.add('valid')
+    colorInput.classList.remove('invalid')
+    colorInput.nextElementSibling.innerText=""
+  }
   
+  if(!formValid)
+    return
   add(tag, content, color, href);
 
   //vider le formulaire
   baliseInput.selectedIndex = 0;
 
   contenuInput.value = "";
+  contenuInput.classList.remove('invalid')
+  contenuInput.classList.remove('valid')
+  colorInput.nextElementSibling.innerText=""
+
   colorInput.value = "";
+  colorInput.classList.remove('invalid')
+  colorInput.classList.remove('valid')
+  contenuInput.nextElementSibling.innerText=""
   colorInput.value = "#000000ff";
   hrefInput.value = "";
 

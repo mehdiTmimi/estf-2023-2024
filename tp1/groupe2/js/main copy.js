@@ -5,7 +5,8 @@ let colorInput = document.getElementById("colorInput");
 let hrefInput = document.getElementById("hrefInput");
 let validerBtn = document.getElementById("validerBtn");
 let resultatListe = document.getElementById("resultatListe");
-
+let etatContent;
+let etatColor;
 //traitements
 let add = (tag, content, color, hrefAttr) => {
   //creation des elements
@@ -89,16 +90,19 @@ contenuInput.addEventListener('input',()=>{
     contenuInput.classList.add('invalid')
     contenuInput.classList.remove('valid')
     contenuInput.nextElementSibling.innerText="5 caracteres minimum"
+    etatContent=false;
   }
   else
   {
     contenuInput.classList.add('valid')
     contenuInput.classList.remove('invalid')
     contenuInput.nextElementSibling.innerText=""
+    etatContent=true;
   }
   verifyForm()
 })
 colorInput.addEventListener("input",()=>{
+  
   let color = colorInput.value
   let colorExpression = /^[#][a-fA-F0-9]{6,8}$/
   if(!colorExpression.test(color))
@@ -106,17 +110,19 @@ colorInput.addEventListener("input",()=>{
     colorInput.classList.add('invalid')
     colorInput.classList.remove('valid')
     colorInput.nextElementSibling.innerText="hex color is required"
+    etatColor=false
   }
   else
   {
     colorInput.classList.add('valid')
     colorInput.classList.remove('invalid')
     colorInput.nextElementSibling.innerText=""
+    etatColor=true
   }
   verifyForm()
 })
 let verifyForm = ()=>{
-  if(document.querySelectorAll('.inputDiv input[class="valid"').length ==2)
+  if(etatColor && etatContent)
     return validerBtn.removeAttribute("disabled")
   validerBtn.setAttribute("disabled",'')
 }
