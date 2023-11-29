@@ -51,8 +51,19 @@ ajouterBtn.addEventListener('click',()=>{
     let nom = nomInput.value.trim()
     let prenom = prenomInput.value.trim()
     let age = ageInput.value
+    const ajax = new XMLHttpRequest()
+    ajax.open("post","http://localhost:3000/etudiants",true)
+    ajax.addEventListener('load',()=>{
+        ajouter(nom,prenom,age)
+    })
+    let dataToSend = {
+        nom,
+        prenom,
+        age
+    }
+    ajax.setRequestHeader("Content-Type","application/json")
+    ajax.send(JSON.stringify(dataToSend))
    
-    ajouter(nom,prenom,age)
 })
 nomInput.addEventListener('input',()=>{
     verifyInput(nomInput)
@@ -108,3 +119,21 @@ let verifyForm = ()=>{
 
     //invalid => button disable
 }
+
+// ajax
+
+const load = ()=>{
+    const ajax = new XMLHttpRequest()
+    ajax.open("get","http://localhost:3000/etudiants",true)
+    ajax.addEventListener("load",()=>{
+        if(ajax.status!=200)
+            return alert("error loading students")
+        let etudiants = JSON.parse(ajax.response)
+        etudiants.forEach(etudiant=>{
+            let {nom,prenom,age} = etudiant
+            ajouter(nom,prenom,age)
+        })
+    })
+    ajax.send()
+}
+load();
