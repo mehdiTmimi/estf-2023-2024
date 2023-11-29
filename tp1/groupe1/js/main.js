@@ -63,6 +63,7 @@ ajouterBtn.addEventListener('click',()=>{
         if(ajax.status==201)
         {
             let {id} = JSON.parse(ajax.response)
+            // let id = JSON.parse(ajax.response).id
             return ajouter(id,nom,prenom,age)
         }
            
