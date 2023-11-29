@@ -54,7 +54,9 @@ ajouterBtn.addEventListener('click',()=>{
     const ajax = new XMLHttpRequest()
     ajax.open("post","http://localhost:3000/etudiants",true)
     ajax.addEventListener('load',()=>{
-        ajouter(nom,prenom,age)
+        if(ajax.status==201)
+           return ajouter(nom,prenom,age)
+        alert("error inserting etudiant")
     })
     let dataToSend = {
         nom,
