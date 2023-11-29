@@ -6,7 +6,7 @@ let ageInput = document.getElementById("ageInput")
 let annulerBtn = document.getElementById("annulerBtn")
 let ajouterBtn = document.getElementById("ajouterBtn")
 let tbody = document.getElementById("tbody")
-
+const urlApi= "http://localhost:3000/etudiants"
 //3- on creer les fonctions (Traitements)
 
 let vider = ()=>{
@@ -15,7 +15,7 @@ let vider = ()=>{
     ageInput.value=''
 }
 
-let ajouter = (nom,prenom,age)=>{
+let ajouter = (id,nom,prenom,age)=>{
 
     // creation dynamique des elements
     let tr = document.createElement("tr")
@@ -38,7 +38,13 @@ let ajouter = (nom,prenom,age)=>{
     btnDelete.innerText="X"
     btnDelete.classList.add('delete')
     btnDelete.addEventListener('click',()=>{
-        tr.remove()
+        deleteFromServer(id,()=>{
+            tr.remove() 
+        },
+        ()=>{
+            alert("error deleting the 'etudiant'")
+        })
+       
     })
 
     tbody.appendChild(tr);
@@ -52,10 +58,14 @@ ajouterBtn.addEventListener('click',()=>{
     let prenom = prenomInput.value.trim()
     let age = ageInput.value
     const ajax = new XMLHttpRequest()
-    ajax.open("post","http://localhost:3000/etudiants",true)
+    ajax.open("post",urlApi,true)
     ajax.addEventListener('load',()=>{
         if(ajax.status==201)
-           return ajouter(nom,prenom,age)
+        {
+            let {id} = JSON.parse(ajax.response)
+            return ajouter(id,nom,prenom,age)
+        }
+           
         alert("error inserting etudiant")
     })
     let dataToSend = {
@@ -126,16 +136,27 @@ let verifyForm = ()=>{
 
 const load = ()=>{
     const ajax = new XMLHttpRequest()
-    ajax.open("get","http://localhost:3000/etudiants",true)
+    ajax.open("get",urlApi,true)
     ajax.addEventListener("load",()=>{
         if(ajax.status!=200)
             return alert("error loading students")
         let etudiants = JSON.parse(ajax.response)
         etudiants.forEach(etudiant=>{
-            let {nom,prenom,age} = etudiant
-            ajouter(nom,prenom,age)
+            let {id,nom,prenom,age} = etudiant
+            ajouter(id,nom,prenom,age)
         })
     })
     ajax.send()
 }
 load();
+const deleteFromServer = (id,reussiFn,echecFn)=>{
+    const ajax = new XMLHttpRequest()
+    ajax.open("delete",urlApi+"/"+id,true)
+    ajax.addEventListener('load',()=>{
+        if(ajax.status==200)
+            return reussiFn()
+        echecFn()
+    })
+    ajax.send()
+
+}
