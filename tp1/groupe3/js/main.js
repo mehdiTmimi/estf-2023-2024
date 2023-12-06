@@ -6,7 +6,7 @@ let btnDivision = document.getElementById("btnDivision");
 let btnMultip = document.getElementById("btnMultip");
 let liste = document.getElementById("liste");
 let btnReset = document.getElementById("btnReset");
-const urlServer = "http://100.97.120.50:3000/calculs";
+const urlServer = "http://127.0.0.1:3000/calculs";
 btnReset.addEventListener("click", () => {
   liste.innerHTML = "";
 });
@@ -32,16 +32,16 @@ let verifyForm = (nbr1, nbr2, operation) => {
   ajax.open("post", urlServer, true);
   ajax.setRequestHeader("Content-Type", "application/json");
   ajax.addEventListener("load", () => {
-    if (ajax.status == 201) 
-        addHistorique(nbr1, nbr2, operation);
-    else 
-        alert("probleme");
+    if (ajax.status == 201) {
+      let {id} = JSON.parse(ajax.response)
+      addHistorique(id, nbr1, nbr2, operation);
+    } else alert("probleme");
   });
   let dataToSend = { nbr1, nbr2, operation };
   let DataJson = JSON.stringify(dataToSend);
   ajax.send(DataJson);
 };
-let addHistorique = (nbr1, nbr2, operation) => {
+let addHistorique = (id, nbr1, nbr2, operation) => {
   let resultat = eval(`(${nbr1})${operation}(${nbr2})`);
   // creation des elements
   let li = document.createElement("li");
@@ -54,7 +54,15 @@ let addHistorique = (nbr1, nbr2, operation) => {
   let btnDelete = document.createElement("button");
   btnDelete.innerText = "X";
   btnDelete.addEventListener("click", () => {
-    li.remove();
+    deleteFromServer(
+      id,
+      () => {
+        li.remove();
+      },
+      (statusCode, statusText) => {
+        alert(statusCode + " " + statusText);
+      }
+    );
   });
   span.innerText = operation;
   li.appendChild(part1);
@@ -77,10 +85,19 @@ const loadCalculs = () => {
       /*let nbr1 = element.nbr1
             let nbr2 = element.nbr2
             let operation = element.operation*/
-      let { nbr1, nbr2, operation } = element; // object destructing
-      addHistorique(nbr1, nbr2, operation);
+      let { id, nbr1, nbr2, operation } = element; // object destructing
+      addHistorique(id, nbr1, nbr2, operation);
     });
   });
   ajax.send();
 };
 loadCalculs();
+
+const deleteFromServer = (id, successfn, failedfn) => {
+  const ajax = new XMLHttpRequest();
+  ajax.open("delete", urlServer + "/" + id, true);
+  ajax.addEventListener("load", () => {
+    if (ajax.status >= 200 && ajax.status < 400) return successfn();
+    failedfn(ajax.status, ajax.statusText);
+  });
+};
