@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node main.js",
     "devStart":"nodemon server.js",
+    "devStart2":"nodemon server2.js",
     "mehdi": "cat main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
